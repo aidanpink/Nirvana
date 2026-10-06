@@ -1,8 +1,8 @@
 # <meta>
 #    <source>@pssbletrngle/github-meta-generator</source>
-#    <version>1.0.76</version>
-#    <timestamp>2026-05-26T14:26:48.520Z</timestamp>
-#    <hash>e8c785d5af569d3b</hash>
+#    <version>1.0.120</version>
+#    <timestamp>2026-08-11T16:32:19.578Z</timestamp>
+#    <hash>57a39d3296dcef6a</hash>
 # </meta>
 
 name: Release
@@ -21,16 +21,16 @@ jobs:
       contents: read
       packages: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: true
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           java-version: 26
           distribution: temurin
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
         with:
           cache-read-only: ${{ github.event_name != 'push' }}
 
