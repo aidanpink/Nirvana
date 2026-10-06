@@ -1,0 +1,50 @@
+Nirvana 2.0.11 - unofficial Minecraft 26.1.1 Fabric source port
+
+Upstream: https://github.com/TeamGalena/Nirvana tag 2.0.11
+Fork: https://github.com/aidanpink/Nirvana/tree/port/26.1.1-fabric
+
+This is a source port, not a namespace-header patch. Minecraft 26.1.1 uses
+unobfuscated official names and Java 25. The old intermediary JAR cannot be
+made compatible merely by changing its class-tweaker header.
+
+Build from the repository root with Java 25:
+  ./gradlew -p port-26 build
+On Windows use gradlew.bat. Set JAVA_HOME to your Java 25 installation.
+The JAR is under port-26/build/libs/nirvana-fabric-*.jar.
+
+Client integration tests (requires a working graphics device):
+  ./gradlew -p port-26 runClientGameTest
+  ./gradlew -p port-26 runClientGameTest -PtestJei
+Tests create disposable integrated worlds, not a dedicated public server.
+
+Dependencies are pinned to Fabric Loader 0.19.5, Fabric API 0.145.4+26.1.1,
+Forge Config API Port 26.1.3 (included), and JEI 29.4.0.23 (optional,
+compile-only unless testJei is specified). JEI is not bundled.
+Galena Hats is included from TeamGalena/Hats main/26.1.x commit
+ d5123e2aaeccb8ab9bebc027fd2f9e034620ad07
+with a 26.1.1 build and a first-run missing-config handling correction.
+Supporter entitlement checks and the upstream API remain intact.
+
+Replaced unavailable Registrate and Multikulti runtime dependencies with
+vanilla/Fabric registration. Preserved their generated resources and ported
+rendering, particles, mixins, recipes, brewing, trades, equipment, loot,
+world generation, and JEI integration. Wild hemp uses an in-mod patch feature
+to preserve its former patch distribution after vanilla removed that feature.
+Villager trades now use 26.1 data-driven trade pools; the random burlap
+selection remains a loot function using Nirvana's burlap tag.
+
+Validation includes real client/world startup with and without JEI, all
+Nirvana block placement and item creation, custom recipe loading, water+weed
+brewing, entity creation, wearable deerstalker rendering, Peace shader loading,
+charged-creeper head loot, and THC effect-cloud explosions. Screenshots were
+visually checked. This is a test build, not a guarantee that every interaction
+with other mods or every gameplay edge case has been covered. Galena supporter
+account authorization was not tested with an entitled account. Dedicated-server
+startup has not been tested separately from the integrated server.
+
+Upstream source folders remain intact. The port lives in this separate module.
+migrate_resources.py documents/repeats conversion of upstream resource formats.
+Code retains the upstream MIT license. Original Nirvana and Galena Hats assets
+remain under their respective upstream All Rights Reserved asset notices;
+this port does not relicense them. Galena Hats' license is included in its JAR.
+The two legacy spawn-egg texture layers originate from Minecraft 1.21.1.

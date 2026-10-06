@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "galena.nirvana.fabric.mixins",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ChickenMixin",
+    "PotionBrewingMixin",
+    "PotionSlotMixin",
+    "TntBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

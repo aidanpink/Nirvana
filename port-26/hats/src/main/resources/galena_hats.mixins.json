@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "galena.hats.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "SkinCustomizationScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
